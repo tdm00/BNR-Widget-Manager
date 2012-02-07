@@ -1,0 +1,40 @@
+
+<h1>Widget Inventory</h1>
+<% if flash[:success] %>
+<div class="alert alert-success">
+	<h4><%= flash[:success] %></h4>
+</div>
+<% end %>
+
+<div class="row">
+  <div class="span12">
+    	<%= link_to 'Create New Widget', { :controller => "Inventory" }, :action => 'new', :class => 'btn' %>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+	<table class="table-striped table-bordered">
+		<thead>
+			<th>Name</th>
+			<th>Colour</th>
+			<th>Size</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+		</thead>
+		<tbody>
+			<% @widgets.each do |widget| %>
+				<tr>
+					<td><%= widget.name %></td>
+					<td><%= widget.color %></td>
+					<td><%= widget.size %></td>
+					<td><%= link_to 'Edit', action: 'edit', id: widget.id %></td>
+					<td><%= link_to 'Delete', action: 'delete', id: widget.id %></td>
+				</tr>
+			<% end %>
+		</tbody>
+		<tfoot>
+		</tfoot>
+	</table>
+  </div>
+</div>
+

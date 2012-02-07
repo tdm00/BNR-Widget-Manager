@@ -1,0 +1,9 @@
+<h2>Create a New Widget</h2>
+<p>Add a Widget to the current inventory using this form.</p>
+	
+
+<%= form_tag("/inventory/create") do %>
+<%= render :partial => 'form', :object=> @widget %>
+<p><%= submit_tag 'Create', :class => 'btn-primary' %></p>
+<% end %>
+

@@ -1,0 +1,7 @@
+<h1>The Supervisors of Widgets</h1>
+
+<% @supervisors.each do |supervisor| %>
+	<%= render :partial => 'person', :locals => {:person => supervisor} %>
+<% end %>
+
+<p>That is all of the supervisors.</p>

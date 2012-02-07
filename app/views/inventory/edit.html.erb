@@ -1,0 +1,7 @@
+<h2>Update the Widget</h2>
+<p>Update the Widget with new information.</p>
+	
+<%= form_tag("/inventory/update/#{@widget.id}") do %>
+<%= render :partial => 'form', :object=> @widget %>
+	<p><%= submit_tag 'Update', :class => 'btn-primary' %></p>
+<% end %>

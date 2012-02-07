@@ -1,0 +1,11 @@
+<h2><%= @widget.name %></h2>
+
+<p>Description: <%= @widget.description %></p>
+
+<p>Color: <%= @widget.color %></p>
+
+<p>Size: <%= @widget.size %></p>
+
+<p>
+	Create a <%= link_to('New Widget', :controller => 'inventory', :action => 'new') %>
+</p>
