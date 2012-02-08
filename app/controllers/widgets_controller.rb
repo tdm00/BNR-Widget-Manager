@@ -11,7 +11,7 @@ class WidgetsController < ApplicationController
   # GET /widgets
   # GET /widgets.json
   def index
-    @widgets = Widget.all
+    @widgets = Widget.all(:order => :name)
 
     respond_to do |format|
       format.html # index.html.erb

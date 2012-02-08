@@ -33,6 +33,7 @@
           <%= link_to "Orders", orders_path %>
         </li>
         <li>
+          <!-- link_to_unless_current -->
           <%= link_to "About Us", controller: "about", action: "company" %>
         </li>
         <li>
@@ -43,7 +44,12 @@
   </div>
 </div>
 
-  <p style="color: green"><%= flash[:notice] %></p>
+<% if flash[:notice] %>
+<div class="alert alert-success">
+  <h4><%= flash[:notice] %></h4>
+</div>
+<% end %>
+
   
 <div class="container">
   <%= yield %>

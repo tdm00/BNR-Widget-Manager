@@ -80,4 +80,40 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # POST /add_box/1?box_id=1
+  def add_box
+    @order = Order.find(params[:id])
+    @box = Box.find(params[:box_id])
+    respond_to do |format|
+      if @order.boxes << @box
+        flash[:notice] = 'Box was successfuly added to order.'
+      end
+      format.html { redirect_to(@order) }
+      format.json  { head :ok }
+    end    
+  end
+
+  # POST /destroy_box/1?box_id=1
+  def remove_box
+    @order = Order.find(params[:id])
+    @box = Box.find(params[:box_id])
+    respond_to do |format|
+      if @order.boxes.delete(@box)
+        flash[:notice] = 'Box was successfuly removed from the order.'
+      end
+      format.html { redirect_to(@order) }
+      format.json  { head :ok }
+    end    
+
+
+    #@box = Box.find(params[:box_id])
+    #respond_to do |format|
+    #  if @order.boxes << @box
+    #    flash[:notice] = 'Box was successfuly added to order.'
+    #  end
+    #  format.html { redirect_to(@order) }
+    #  format.json  { head :ok }
+    #end    
+  end
 end

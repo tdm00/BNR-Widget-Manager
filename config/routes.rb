@@ -1,6 +1,12 @@
 Manager::Application.routes.draw do
 
-  resources :orders
+  #member: orders/1/add_box
+  #collection orders/filter
+
+  resources :orders do
+      post :add_box, :on => :member
+      delete :remove_box, :on => :member
+  end
 
   resources :boxes
 

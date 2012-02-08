@@ -1,10 +1,29 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Name:</b>
   <%= @order.name %>
 </p>
+<p>
+    <b>Placed on:</b>
+    <%= @order.created_at %>
+</p>
 
+<p>Order contains <%= @order.boxes.size %> boxes.</p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<ul>
+ <% @order.boxes.each do |box| %>
+  <li>A <%= box.color %> <%= box.material %> box. <%=link_to "Remove", remove_box_order_path(:id => @order.id, :box_id => box.id), confirm: 'Are you sure?', method: :delete %></li>
+ <% end %>
+</ul>
+
+<p>Add a box to this order:</p>
+<%#= form_tag :action => 'add_box', :id => @order.id do %>
+<%= form_tag add_box_order_path(@order) do %>
+ <label for="box_order">Box</label><br/>
+  <%= select_tag 'box_id',
+   options_for_select(Box.find(:all).collect { |b|
+    [ b.description, b.id ] }) %>
+  <%= submit_tag 'Add Box', :class => "btn btn-primary"  %>
+<% end %>
+
+<%= link_to 'Edit', edit_order_path(@order), :class => "btn" %>
+<%= link_to 'Back', orders_path, :class => "btn" %>

@@ -1,10 +1,11 @@
-<h1>Listing boxes</h1>
+<h1>Boxes</h1>
 
 <table class="listing">
   <tr>
     <th>Material</th>
     <th>Color</th>
     <th>Widget</th>
+    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
     <td><%= box.material %></td>
     <td><%= box.color %></td>
     <td><%= box.widget ? box.widget.name : "None" %></td>
+    <td><%= box.description ? box.description : "None" %></td>
     <td><%= link_to 'Show', box %></td>
     <td><%= link_to 'Edit', edit_box_path(box) %></td>
     <td><%= link_to 'Destroy', box, confirm: 'Are you sure?', method: :delete %></td>
