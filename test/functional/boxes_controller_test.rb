@@ -18,7 +18,8 @@ class BoxesControllerTest < ActionController::TestCase
 
   test "should create box" do
     assert_difference('Box.count') do
-      post :create, box: @box.attributes
+      post :create, box: {:material => "Raw Wood", :color => "Brownie"}
+      puts @response.body
     end
 
     assert_redirected_to box_path(assigns(:box))

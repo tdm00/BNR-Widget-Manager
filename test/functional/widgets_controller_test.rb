@@ -18,7 +18,7 @@ class WidgetsControllerTest < ActionController::TestCase
 
   test "should create widget" do
     assert_difference('Widget.count') do
-      post :create, :widget => {:name => "A Test Widget", :color => "blue"}
+      post :create, :widget => {:name => "A Test Widget", :color => "Blue"}
     end
 
     assert_redirected_to widget_path(assigns(:widget))

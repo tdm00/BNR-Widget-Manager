@@ -37,6 +37,13 @@
         <li>
           <%= link_to "Contact", controller: "about", action: "contact" %>
         </li>
+        <li>
+          <%# if user_authenticated? %>
+            <%#= link_to "Logout", controller: "login", action: "logout" %>
+          <%# else %>
+            <%#= link_to "Login", controller: "login", action: "login" %>
+          <%# end %>
+        </li>
       </ul>
     </div>
   </div>

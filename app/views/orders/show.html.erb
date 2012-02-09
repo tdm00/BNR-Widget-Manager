@@ -1,3 +1,5 @@
+<h1>Order Information</h1>
+
 <p>
   <b>Name:</b>
   <%= @order.name %>
@@ -7,17 +9,19 @@
     <%= "#{time_ago_in_words(@order.created_at)} ago" %>
 </p>
 
-<p>Order contains <%= pluralize(@order.boxes.size, "box") %>.</p>
+<div id="total">
+ <%= render :partial => 'total' %>
+</div>
 
-<ul>
+<ul id="box_listing">
  <% @order.boxes.each do |box| %>
-  <li>A <%= box.color %> <%= box.material %> box. <%=link_to "Remove", remove_box_order_path(:id => @order.id, :box_id => box.id), confirm: 'Are you sure?', method: :delete %></li>
+	 <%= render :partial => 'box', :locals => {:box => box} %>
  <% end %>
 </ul>
 
 <p>Add a box to this order:</p>
 <%#= form_tag :action => 'add_box', :id => @order.id do %>
-<%= form_tag add_box_order_path(@order) do %>
+<%= form_tag add_box_order_path(@order), :remote => true do %>
  <label for="box_order">Box</label><br/>
   <%= select_tag 'box_id',
    options_for_select(Box.find(:all).collect { |b|

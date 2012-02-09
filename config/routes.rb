@@ -1,5 +1,9 @@
 Manager::Application.routes.draw do
 
+  resources :users
+
+  root :to => "widgets#index"
+
   #member: orders/1/add_box
   #collection orders/filter
 
@@ -14,9 +18,12 @@ Manager::Application.routes.draw do
       get :filter, :on => :collection
   end
 
+  match "/products/:name" => "widgets#show", :as => :products
+
   get "inventory/new"
 
   get "about/company"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

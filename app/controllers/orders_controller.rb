@@ -85,13 +85,18 @@ class OrdersController < ApplicationController
   def add_box
     @order = Order.find(params[:id])
     @box = Box.find(params[:box_id])
+
     respond_to do |format|
-      if @order.boxes << @box
+      if !@order.boxes.include?(@box) && @order.boxes << @box
         flash[:notice] = 'Box was successfuly added to order.'
+        format.html { redirect_to(@order) }
+        format.json  { head :ok }
+        format.js
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
       end
-      format.html { redirect_to(@order) }
-      format.json  { head :ok }
-    end    
+    end
   end
 
   # POST /destroy_box/1?box_id=1

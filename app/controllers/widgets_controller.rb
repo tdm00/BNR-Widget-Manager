@@ -1,5 +1,7 @@
 class WidgetsController < ApplicationController
 
+  before_filter :authenticated, :except => [:show, :index]
+
   def filter
     @widgets = Widget.find_all_by_size(params[:size])
     respond_to do |format|
@@ -22,7 +24,11 @@ class WidgetsController < ApplicationController
   # GET /widgets/1
   # GET /widgets/1.json
   def show
-    @widget = Widget.find(params[:id])
+    if params[:name]
+      @widget = Widget.find_by_name(params[:name])
+    else
+      @widget = Widget.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -87,6 +93,16 @@ class WidgetsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to widgets_url }
       format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def authenticated
+    unless session[:logged_in] == true
+      flash[:notice] = "You must be logged in to perform this action"
+      redirect_to :action => "show"
+      return false
     end
   end
 end

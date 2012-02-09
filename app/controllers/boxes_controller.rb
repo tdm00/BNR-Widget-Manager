@@ -1,4 +1,7 @@
 class BoxesController < ApplicationController
+
+  before_filter :set_box, :only => [:show, :edit, :update, :destroy]
+
   # GET /boxes
   # GET /boxes.json
   def index
@@ -13,7 +16,6 @@ class BoxesController < ApplicationController
   # GET /boxes/1
   # GET /boxes/1.json
   def show
-    @box = Box.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +36,7 @@ class BoxesController < ApplicationController
 
   # GET /boxes/1/edit
   def edit
-    @box = Box.find(params[:id])
+    
   end
 
   # POST /boxes
@@ -56,7 +58,6 @@ class BoxesController < ApplicationController
   # PUT /boxes/1
   # PUT /boxes/1.json
   def update
-    @box = Box.find(params[:id])
 
     respond_to do |format|
       if @box.update_attributes(params[:box])
@@ -72,7 +73,6 @@ class BoxesController < ApplicationController
   # DELETE /boxes/1
   # DELETE /boxes/1.json
   def destroy
-    @box = Box.find(params[:id])
     @box.destroy
 
     respond_to do |format|
@@ -80,4 +80,10 @@ class BoxesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def set_box
+      @box = Box.find(params[:id])
+    end
+
 end
