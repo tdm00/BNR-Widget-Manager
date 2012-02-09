@@ -94,7 +94,6 @@ class OrdersController < ApplicationController
         format.js
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
       end
     end
   end

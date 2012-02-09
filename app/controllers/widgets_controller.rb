@@ -1,6 +1,6 @@
 class WidgetsController < ApplicationController
 
-  before_filter :authenticated, :except => [:show, :index]
+  
 
   def filter
     @widgets = Widget.find_all_by_size(params[:size])
@@ -14,7 +14,7 @@ class WidgetsController < ApplicationController
   # GET /widgets.json
   def index
     @widgets = Widget.all(:order => :name)
-
+    #debugger
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @widgets }
@@ -96,13 +96,4 @@ class WidgetsController < ApplicationController
     end
   end
 
-  private
-
-  def authenticated
-    unless session[:logged_in] == true
-      flash[:notice] = "You must be logged in to perform this action"
-      redirect_to :action => "show"
-      return false
-    end
-  end
 end
