@@ -16,12 +16,10 @@
     <link href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 </head>
 <body>
-<div class="navbar ">
+<div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">
-        The Widget Manager
-      </a>
+      <%= link_to "The Widget Manager", widgets_path, :class => "brand" %>
       <ul class="nav">
         <li>
           <%= link_to "Inventory", widgets_path %>

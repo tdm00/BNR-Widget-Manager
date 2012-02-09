@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  description: MyText
-  color: MyString
+  name: "Widget 1"
+  description: "My First Widget"
+  color: Blue
   size: 1
 
 two:
-  name: MyString
-  description: MyText
-  color: MyString
-  size: 1
+  name: "Widget 2"
+  description: "My Second Widget"
+  color: Red
+  size: 100

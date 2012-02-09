@@ -12,7 +12,8 @@
 <% @orders.each do |order| %>
   <tr>
     <td><%= order.name %></td>
-    <td><%= order.created_at %></td>
+    <td>
+      <%= "#{time_ago_in_words(order.created_at)} ago" %>
     <td>
       <%= link_to 'Show', order %>
     </td>

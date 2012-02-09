@@ -10,7 +10,7 @@ class Widget < ActiveRecord::Base
 											:uniqueness => true
 
 	validates :color,
-											:inclusion => %w(red white blue RED WHITE BLUE Red White Blue)
+											:inclusion => %w(Silver Grey Blue Green Yellow Red White Teal Almond Brown Black)
 
-
+#return if color.blank?
 end

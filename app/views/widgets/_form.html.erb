@@ -19,10 +19,12 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+
   <div class="field">
     <%= f.label :color %><br />
     <%= f.text_field :color %>
   </div>
+
   <div class="field">
     <%= f.label :size %><br />
     <%= f.number_field :size %>
@@ -30,9 +32,8 @@
   <div class="field">
     <%= f.label :box_id, "Box" %><br />
     <%= f.select :box_id,
-                 Box.all.collect {|b|
-                   [ b.material, b.id ] },
-                 {:include_blank => true} %>
+     box_options,
+     { :include_blank => true } %>
   </div>  
   <div class="actions">
     <%= f.submit :class => "btn btn-primary" %>

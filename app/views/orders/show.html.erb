@@ -4,10 +4,10 @@
 </p>
 <p>
     <b>Placed on:</b>
-    <%= @order.created_at %>
+    <%= "#{time_ago_in_words(@order.created_at)} ago" %>
 </p>
 
-<p>Order contains <%= @order.boxes.size %> boxes.</p>
+<p>Order contains <%= pluralize(@order.boxes.size, "box") %>.</p>
 
 <ul>
  <% @order.boxes.each do |box| %>

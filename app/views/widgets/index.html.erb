@@ -15,6 +15,7 @@
     <th>Color</th>
     <th>Size</th>
     <th>Box</th>
+    <th>Created</th>
     <th></th>
     <th></th>
     <th></th>
@@ -33,6 +34,9 @@
       <% else %>
           None
       <% end %>
+    </td>
+    <td>
+      <%= "#{my_date(widget.created_at)}" %>
     </td>
     <td>
       <%= link_to 'Show', widget_path(widget), :class => "btn btn-primary" %>
