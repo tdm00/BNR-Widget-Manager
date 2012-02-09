@@ -18,6 +18,7 @@ class WidgetsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @widgets }
+      format.rss  { render :layout => false }
     end
   end
 
@@ -56,7 +57,6 @@ class WidgetsController < ApplicationController
   # POST /widgets.json
   def create
     @widget = Widget.new(params[:widget])
-    Notifications.widget_creation(@widget).deliver
     respond_to do |format|
       if @widget.save
         format.html { redirect_to @widget, notice: 'Widget was successfully created.' }
