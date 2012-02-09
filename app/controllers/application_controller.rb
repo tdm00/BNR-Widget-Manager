@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :check_login, :except => [:index, :show, :new, :create, :login, :authenticate]
+  #before_filter :check_login, :except => [:index, :show, :new, :create, :login, :authenticate]
+  before_filter :check_login, :only => [:edit, :update, :destroy]
 
   private
 

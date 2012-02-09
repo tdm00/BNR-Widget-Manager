@@ -108,6 +108,7 @@ class OrdersController < ApplicationController
       end
       format.html { redirect_to(@order) }
       format.json  { head :ok }
+      format.js {}
     end    
 
 
