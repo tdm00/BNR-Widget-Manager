@@ -1,14 +1,22 @@
-<h1>Widgets</h1>
+<h2>Widgets</h2>
 
-<form action="/widgets/filter">
-    <label for="size">Enter A Size To Match to Widget:</label>
-    <input type="text" id="size" name="size" class="span2">
-    <input type="submit" value="Search by size" class="btn">
-    <%= link_to "Reset", {:controller => "widgets", :action => "index"}, :class => "btn" %>
-    
-</form>
+<div class="row">
+  <div class="span2">
+    <%= link_to 'New Widget', new_widget_path, :class => "btn" %>
+  </div>
+  <div class="span5 offset5">
+    <form action="/widgets/filter" class=" form-search">
+      <input type="text" id="size" name="size" class="input-medium search-query">
+      <button type="submit" class="btn">Search</button>
+      <%= link_to "Reset", {:controller => "widgets", :action => "index"}, :class => "btn" %>
+    </form>
+  </div>
+</div>
 
-<table class="listing">
+
+
+
+<table class="table table-striped table-bordered table-condensed">
   <tr>
     <th>Name</th>
     <th>Description</th>
@@ -57,4 +65,4 @@
 
 <br />
 
-<%= link_to 'New Widget', new_widget_path %>
+

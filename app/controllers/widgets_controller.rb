@@ -19,6 +19,7 @@ class WidgetsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @widgets }
       format.rss  { render :layout => false }
+      format.atom # index.atom.builder
     end
   end
 
